@@ -80,22 +80,27 @@ function help() {
   echo "Usage: ${HELPER_NAME} <command>"
   echo ""
   echo "Available commands:"
-  echo "  changelog                                     Show changelog"
-  echo "  update                                        Update ${HELPER_NAME} command"
-  echo "  create                                        Create cluster"
+  echo "  changelog     Show changelog"
+  echo "  version       Update ${HELPER_NAME} command"
+  echo "  update        Update ${HELPER_NAME} command"
+  echo "  create        Create cluster"
 }
 
 VERSION=$(make -C "$HELPER_PATH" version)
 UNAME=$(uname -s)
 CMD=${1:-""}
+MAKE="make -C $HELPER_PATH/Makefile"
 
 echo "$HELPER_PATH: $VERSION on $UNAME"
 case ${CMD} in
   "changelog")
-    make -C changelog
+    $MAKE changelog
+    ;;
+  "version")
+    $MAKE version
     ;;
   "update")
-    _update
+    $MAKE update
     ;;
   "create")
     shift
