@@ -6,12 +6,16 @@ reg_port='5000'
 reg_url=$reg_host:$reg_port
 
 # Push http-echo to local registry
+echo
+echo "@ Pull, tag and push http-echo image"
 HTTP_ECHO_VERSION=0.2.3
 docker pull hashicorp/http-echo:$HTTP_ECHO_VERSION
 docker tag hashicorp/http-echo:$HTTP_ECHO_VERSION $reg_url/http-echo:$HTTP_ECHO_VERSION
 docker push $reg_url/http-echo:$HTTP_ECHO_VERSION
 
 # Deploy http-echo from local registry
+echo
+echo "$ kubectl apply -f -"
 APP=echo-app
 cat <<EOF | kubectl apply -f -
 kind: Pod
@@ -29,10 +33,14 @@ spec:
 EOF
 
 # Wait until pod is ready
+echo
+echo "@ Waiting for pods are ready to process requests"
 kubectl wait \
   --for=condition=ready \
   pod $APP \
   --timeout=90s
 
 # Delete POD
+echo
+echo "$ kubectl delete pod $APP"
 kubectl delete pod $APP

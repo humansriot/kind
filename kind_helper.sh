@@ -80,10 +80,12 @@ function help() {
   echo "Usage: ${HELPER_NAME} <command>"
   echo ""
   echo "Available commands:"
+  echo "  create [<config>] [<name>]    Create cluster (optional: <config> file, <name> cluster name)"
+  echo "  test                          Test cluster"
+  echo ""
   echo "  changelog     Show changelog"
   echo "  version       Update ${HELPER_NAME} command"
   echo "  update        Update ${HELPER_NAME} command"
-  echo "  create        Create cluster"
 }
 
 VERSION=$(make -C "$HELPER_PATH" version)
@@ -91,7 +93,6 @@ UNAME=$(uname -s)
 CMD=${1:-""}
 MAKE="make -C $HELPER_PATH"
 
-echo "$HELPER_PATH: $VERSION on $UNAME"
 case ${CMD} in
   "changelog")
     $MAKE changelog
@@ -105,6 +106,10 @@ case ${CMD} in
   "create")
     shift
     create_cluster "${1:-$HELPER_PATH/cluster.yaml}" "${2:-kind}"
+    ;;
+  "test")
+    "$HELPER_PATH"/test_ingress.sh
+    "$HELPER_PATH"/test_registry.sh
     ;;
   *)
     help

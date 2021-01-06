@@ -48,3 +48,8 @@ Create cluster with given configuration and change name.
 ```
 kind_helper create config.yaml name
 ```
+
+Test cluster
+```
+kind_helper test
+```

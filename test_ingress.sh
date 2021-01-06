@@ -19,7 +19,7 @@ kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/usage.yaml
 
 # Wait until pods are ready to process requests
 echo
-echo "Waiting for pods are ready to process requests"
+echo "@ Waiting for pods are ready to process requests"
 kubectl wait \
   --for=condition=ready pod \
   --selector=app=foo \
