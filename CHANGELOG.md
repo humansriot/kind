@@ -20,7 +20,7 @@
 - Initial release
 
 [Unreleased]: https://github.com/humansriot/kind/compare/0.2.1...HEAD
-[0.2.1]: https://github.com/humansriot/kind/compare/0.2.1...0.2.0
-[0.2.0]: https://github.com/humansriot/kind/compare/0.2.0...0.1.0
-[0.1.0]: https://github.com/humansriot/kind/compare/0.1.0...0.0.1
+[0.2.1]: https://github.com/humansriot/kind/compare/0.2.0...0.2.1
+[0.2.0]: https://github.com/humansriot/kind/compare/0.1.0...0.2.0
+[0.1.0]: https://github.com/humansriot/kind/compare/0.0.1...0.1.0
 [0.0.1]: https://github.com/humansriot/kind/releases/tag/0.0.1
