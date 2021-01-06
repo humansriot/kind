@@ -110,10 +110,10 @@ function help() {
   echo "  update        Update ${HELPER_NAME} command"
 }
 
-VERSION=$(make -C "$HELPER_PATH" version)
 UNAME=$(uname -s)
 CMD=${1:-""}
-MAKE="make -C $HELPER_PATH"
+MAKE="make -C $HELPER_PATH --no-print-directory"
+VERSION=$($MAKE version)
 
 case ${CMD} in
   "changelog")
