@@ -13,6 +13,28 @@ function follow_links() {
 HELPER_NAME=$(basename "$0")
 HELPER_PATH=$(dirname "$(follow_links "$0")")
 
+function check_command() {
+  local name
+  local command
+  name=$1
+  command=$2
+
+  if $command &> /dev/null; then
+    echo
+    echo "$ $command"
+    $command
+  else
+    echo "$name is missing"
+  fi
+}
+
+function doctor() {
+  check_command docker "docker --version"
+  check_command kubectl "kubectl version"
+  check_command kind "kind version"
+  check_command kind_helper "kind_helper version"
+}
+
 function create_cluster() {
   local cluster_config
   local cluster_name
@@ -102,6 +124,9 @@ case ${CMD} in
     ;;
   "update")
     $MAKE update
+    ;;
+  "doctor")
+    doctor
     ;;
   "create")
     shift
