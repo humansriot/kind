@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-mkdir -p "$HOME"/.humansriot
-cd "$HOME"/.humansriot
-git clone git@github.com:humansriot/kind.git
-ln -sf "$PWD"/kind/kind_helper.sh /usr/local/bin/kind_helper
+HELPER=kind
+INSTALL_PATH="$HOME"/.humansriot/$HELPER
+
+# Clone repository
+rm -rf "$INSTALL_PATH"
+mkdir -p "$INSTALL_PATH"
+cd "$(dirname "$INSTALL_PATH")"
+git clone git@github.com:humansriot/$HELPER.git
+
+# Link tools
+ln -sf "$INSTALL_PATH"/kind_helper.sh /usr/local/bin/kind_helper

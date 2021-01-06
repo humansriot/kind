@@ -89,7 +89,7 @@ function help() {
 VERSION=$(make -C "$HELPER_PATH" version)
 UNAME=$(uname -s)
 CMD=${1:-""}
-MAKE="make -C $HELPER_PATH/Makefile"
+MAKE="make -C $HELPER_PATH"
 
 echo "$HELPER_PATH: $VERSION on $UNAME"
 case ${CMD} in
