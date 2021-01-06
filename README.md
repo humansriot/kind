@@ -22,14 +22,12 @@ kubectl version
 ```
 
 ## Installation
-Clone this repository and link `kind_create` script in `/usr/local/bin`.
+### macOS/Linux
 ```
-mkdir -p tools/humansriot
-cd tools/humansriot
-git clone git@github.com:humansriot/kind.git
-ln -sf $PWD/kind/kind_helper.sh /usr/local/bin/kind_helper
+curl -fsSL https://raw.githubusercontent.com/humansriot/kind/master/install.sh | bash
 ```
-
+### Windows
+TODO
 ## Update
 
 
