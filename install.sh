@@ -12,4 +12,4 @@ cd "$(dirname "$INSTALL_PATH")"
 git clone git@github.com:$ORG/$HELPER.git
 
 # Link tools
-ln -sf "$INSTALL_PATH"/kind_helper.sh /usr/local/bin/kind_helper
+sudo ln -sf "$INSTALL_PATH"/kind_helper.sh /usr/local/bin/kind_helper
