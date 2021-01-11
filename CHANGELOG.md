@@ -1,7 +1,9 @@
 # Changelog
 
 ## [Unreleased]
-
+### Fixed
+- Replace kind-registry by localhost in ConfigMap to work with Tilt
+ 
 ## [0.2.1] - 2021-01-06
 ### Fixed
 - Don't display entering/leaving directory (from make)
