@@ -83,7 +83,12 @@ data:
     help: "https://kind.sigs.k8s.io/docs/user/local-registry/"
 EOF
 
+  # Wait Node ready
+  echo "Waiting for node to be ready"
+  kubectl wait --for=condition=ready node kind-control-plane
+
   # Deploy Ingress NGINX controller
+  echo "Waiting for NGINX controller"
   NGINX_INGRESS_CONTROLLER_VERSION=0.43.0
   kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v${NGINX_INGRESS_CONTROLLER_VERSION}/deploy/static/provider/kind/deploy.yaml
   kubectl wait --namespace ingress-nginx \
